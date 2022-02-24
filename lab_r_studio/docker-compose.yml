@@ -1,0 +1,10 @@
+version: "3.9"
+   
+services:
+  r_studio_server:
+    build: 
+       dockerfile: ./my_r_studio.dockerfile
+    #volumes:
+    #  - C:\Users\sawat\Desktop\lab_r_studio\r_studio_server_home:/home
+    ports:
+      - 8787:8787
