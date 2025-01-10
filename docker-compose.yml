@@ -2,6 +2,7 @@ version: '3.3'
 services:
   db:
     image: mysql:latest
+    command: [ "--max_connections=1000" ]
     restart: always
     environment:
       MYSQL_DATABASE: 'thaneea'
@@ -17,3 +18,7 @@ services:
     volumes:
       - ./mysql:/var/lib/mysql
       - ./schema:/docker-entrypoint-initdb.d
+    ulimits:
+      nofile:
+        soft: 20000
+        hard: 40000
