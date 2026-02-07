@@ -2,7 +2,13 @@ version: '3.3'
 services:
   db:
     image: mysql:latest
-    command: [ "--max_connections=1000" ]
+    command:
+      - --max_connections=1000
+      - --innodb_buffer_pool_size=4G
+      - --performance_schema=OFF
+      - --skip-name-resolve
+      - --table_open_cache=8000
+      - --table_definition_cache=4000
     restart: always
     environment:
       MYSQL_DATABASE: 'thaneea'
